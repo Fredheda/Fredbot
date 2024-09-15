@@ -27,8 +27,8 @@ if prompt := st.chat_input(placeholder="Enter your question here"):
     st.chat_message("user").write(prompt)
     
     current_datetime = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    prompt = llm.construct_streaming_prompt(prompt, prompt_path, tfl_status=tfl_status, current_datetime=current_datetime)
+    prompt = llm.construct_prompt(prompt, prompt_path, tfl_status=tfl_status, current_datetime=current_datetime)
     print(prompt)
     with st.chat_message("assistant"):
-        response = st.write_stream(llm.streaming_response(prompt))
+        response = st.write_stream(llm.generate_response(prompt, True))
     st.session_state.chat_messages.append({"role": "assistant", "content": response})

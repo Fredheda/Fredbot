@@ -4,3 +4,4 @@ __pycache__
 cpu-int4-rtn-block-32-acc-level-4
 test*
 .DS_Store
+phi_onnx_models
