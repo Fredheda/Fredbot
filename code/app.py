@@ -1,20 +1,22 @@
 import streamlit as st
 from llm.phi3 import phi3_llm
+from llm.openai_llm import openai_llm
 from tfl_api import construct_tfl_status
 from datetime import datetime
 
 tfl_status = construct_tfl_status()
 
-model_id = "microsoft/Phi-3.5-mini-instruct"
-llm = phi3_llm(model_id)
-prompt_path = 'prompt_templates/tfl_disruption.txt'
-
 st.title("Fredbot 💬")
 
 option = st.radio(
     'Model:',
-    ('Phi-3.5', 'GPT4o', 'GPT4o-mini') # Only Phi-3.5 available at this time.
+    ('gpt4o-mini', 'gpt4o','Phi-3.5')
 )
+if option == 'Phi-3.5':
+    llm = phi3_llm("microsoft/Phi-3.5-mini-instruct")
+else:
+    llm = openai_llm(option)
+prompt_path = 'prompt_templates/tfl_disruption.txt'
 
 if "chat_messages" not in st.session_state:
     st.session_state["chat_messages"] = [{"role": "assistant", "content": "How can I help you?"}]
