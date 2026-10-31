@@ -1,7 +1,19 @@
+# Environment
 .env
-legacy
-__pycache__
-cpu-int4-rtn-block-32-acc-level-4
-test*
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+
+# Misc
 .DS_Store
-phi_onnx_models
