@@ -17,7 +17,7 @@ In development the Vite dev server proxies `/api/*` to the backend.
 ## Prerequisites
 
 - Python 3.10+
-- Node.js 22+
+- Node.js 26+ (current LTS)
 
 ## Getting started
 
