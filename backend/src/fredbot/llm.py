@@ -14,7 +14,7 @@ class ChatModel(Protocol):
 
 class LiteLLMChatModel:
     """Streams completions from any provider LiteLLM supports, selected by model string
-    (e.g. ``openai/gpt-4o-mini`` or ``azure/<deployment>``)."""
+    (e.g. ``openai/gpt-6-luna`` or ``azure/<deployment>``)."""
 
     def __init__(self, **completion_kwargs: Any) -> None:
         self._completion_kwargs = completion_kwargs

@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="FREDBOT_", env_file=".env", extra="ignore")
 
     app_name: str = "Fredbot"
-    default_model: str = "openai/gpt-4o-mini"
+    default_model: str = "openai/gpt-6-luna"
     system_prompt: str = DEFAULT_SYSTEM_PROMPT
     cors_origins: list[str] = ["http://localhost:5173"]
 
