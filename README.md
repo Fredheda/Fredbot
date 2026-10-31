@@ -48,7 +48,7 @@ and provide that provider's credentials:
 
 | Provider     | `FREDBOT_DEFAULT_MODEL`   | Credentials                                            |
 | ------------ | ------------------------- | ------------------------------------------------------ |
-| OpenAI       | `openai/gpt-4o-mini`      | `OPENAI_API_KEY`                                       |
+| OpenAI       | `openai/gpt-6-luna`       | `OPENAI_API_KEY`                                       |
 | Azure OpenAI | `azure/<deployment-name>` | `AZURE_API_KEY`, `AZURE_API_BASE`, `AZURE_API_VERSION` |
 | Anthropic    | `anthropic/<model>`       | `ANTHROPIC_API_KEY`                                    |
 
