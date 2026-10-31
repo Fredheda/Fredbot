@@ -31,13 +31,29 @@ Open http://localhost:5173.
 
 ## Common commands
 
-| Command        | What it does                                   |
-| -------------- | ---------------------------------------------- |
-| `make dev`     | Run backend (reload) and frontend dev servers  |
-| `make lint`    | ruff, oxlint, prettier and TypeScript checks   |
-| `make test`    | pytest and vitest                              |
+| Command     | What it does                                  |
+| ----------- | --------------------------------------------- |
+| `make dev`  | Run backend (reload) and frontend dev servers |
+| `make lint` | ruff, oxlint, prettier and TypeScript checks  |
+| `make test` | pytest and vitest                             |
 
 ## Configuration
 
 Backend settings are read from environment variables (or `backend/.env`) with the `FREDBOT_` prefix.
 See [`backend/.env.example`](backend/.env.example).
+
+Fredbot is model agnostic: it calls models through [LiteLLM](https://docs.litellm.ai/docs/providers),
+so switching provider is a config change. Set `FREDBOT_DEFAULT_MODEL` to a LiteLLM model string
+and provide that provider's credentials:
+
+| Provider     | `FREDBOT_DEFAULT_MODEL`   | Credentials                                            |
+| ------------ | ------------------------- | ------------------------------------------------------ |
+| OpenAI       | `openai/gpt-4o-mini`      | `OPENAI_API_KEY`                                       |
+| Azure OpenAI | `azure/<deployment-name>` | `AZURE_API_KEY`, `AZURE_API_BASE`, `AZURE_API_VERSION` |
+| Anthropic    | `anthropic/<model>`       | `ANTHROPIC_API_KEY`                                    |
+
+## Agent API
+
+`POST /api/agent` implements the AG-UI protocol: it accepts a `RunAgentInput` (conversation so far)
+and streams `RUN_STARTED`, `TEXT_MESSAGE_*` and `RUN_FINISHED` (or `RUN_ERROR`) events over SSE.
+It works with `HttpAgent` from `@ag-ui/client`.
