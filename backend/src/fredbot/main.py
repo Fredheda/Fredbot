@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from fredbot import __version__
-from fredbot.api import health
+from fredbot.api import agent, health
 from fredbot.config import Settings, get_settings
 
 
@@ -17,6 +17,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(health.router, prefix="/api")
+    app.include_router(agent.router, prefix="/api")
     return app
 
 
